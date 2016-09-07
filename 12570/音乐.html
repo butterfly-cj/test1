@@ -1,0 +1,184 @@
+<!COCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>音乐播放器</title>
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
+        <style>
+           body{
+               background-color: #333;
+               color: rgb(174,164,154);
+               text-align: center;
+              } 
+           main{
+               width: 300px;
+               height: 300px;
+               background-image: url(wf.png);
+               background-size: 300px 300px;
+               /*background-color: red;*/
+               margin: 200px auto 0 auto;
+               border-radius: 50px;
+               opacity: 0.6;
+               box-shadow: 0 2px 5px #000; 
+               animation-name: slideBg;
+               animation-duration: 0.5s;
+               /*动画时间：完成一次所需要的时间，默认值是0；*/
+               background-repeat: no-repeat;
+               /*取消背景图片重复*/
+           }
+           @keyframes slideBg{
+               from{
+                   background-position: 300px 0;
+               }
+               to{
+                   background-position: 0 0;
+               }
+           }
+           header{
+              width: 100%;
+              height: 96px;
+              overflow: hidden;
+              background-color: rgba(22, 22,22, 0.9);
+              margin: 200px auto 0 auto; 
+              border-top-left-radius: 50px;
+              border-top-right-radius: 50px;
+           }
+           /*h1和h2都自带样式*/
+           h1{
+               font-size: 30px;
+               font-weight: normal;
+               margin: 0;
+               padding-top: 20px;
+               
+           }
+           h2{
+               font-size: 16px;
+               font-weight: normal;
+               margin: 0;
+               
+           }
+           progress{
+               /*progress：自带样式，例如边框*/
+               width: 100%;
+               height: 4px;
+               display: block;
+               /*转化成块级元素*/
+               border: none;
+               background-color: #000;
+           }
+           ::-moz-progress-bar{
+               background: rgb(200,87,88);
+           }
+          footer{
+               width: 100%;
+               height: 200px;
+               background-color: rgba(106,35,42,0.9);
+               border-bottom-left-radius: 50px;
+               border-bottom-right-radius: 50px;
+               overflow: hidden;
+           }
+           time{
+               font-size: 35px;
+               margin: 25px auto;
+               display: block;
+           }
+           .fa-backward,.fa-forward{
+               /*class类名，css中前面加.*/
+               font-size: 30px;
+               position: relative;
+               bottom: 7px;
+           }
+           .fa-pause,.fa-play{
+               font-size: 50px;
+               margin: 0 20px;
+           }
+           aside{
+               margin-top: 25px;
+           }
+           aside progress{
+               width: 100px;
+               height: 2px;
+               display: inline-block;
+               position: relative;
+               bottom: 7px;
+           }
+           .fa:hover{
+               /*设置鼠标放到选择的元素上的效果*/
+               color: #fff;
+               cursor: pointer  ;
+               /*改变鼠标形状*/
+               text-shadow: 0 3px 10px #fff;
+           }
+        </style>
+    </head>
+    <body>
+        <body>
+            <!--<audio src="传奇.mp3" autoplay></audio>-->
+            <!--autoplay：音乐准备完成后自动播放-->
+            <audio src=""></audio>
+            <main>
+                <!--主题内容头部-->
+               <header>
+                  <h1>给你们</h1> 
+                  <h2>张宇</h2>
+               </header> 
+               <!--progress:进度条-->
+               <progress value="0.5">
+                   
+               </progress>
+               <footer>
+                   <time>2:20</time>
+                   <section>
+                       <span class="fa fa-backward"></span>
+                       <!--上一曲按钮-->
+                       <span class="fa fa-pause"></span>
+                       <!--pause:暂停-->
+                       <span class="fa fa-forward"></span>
+                       <!--下一曲按钮-->
+                   </section>
+                   <aside>
+                       <span class="fa fa-volume-down"></span>
+                       <progress value="0.5">
+                           <!--进度条，在这里表示音量-->
+                       </progress>
+                       <span class="fa fa-volume-up"></span>
+                   </aside>
+               </footer>
+            </main>
+        </body>
+        <script>
+            //写入JS文件
+            var player = document.getElementsByTagName("audio")[0];
+            //创建player变量，获取第一个audio标签
+            var playList = [ {name:"传奇",singer:"王菲",src:"传奇.mp3",pic:"wf.png"},
+            {name:"知道不知道",singer:"刘若英",src:"知道不知道.mp3",pic:"lry.jpg"} ];
+            function play(nums){
+                player.src = nums.src;//获取当前歌曲音频路径
+                player.play();//播放当前歌曲
+            }
+           var current = 0;//创建变量
+           function start(){//创建start()函数
+               if(current >= playList.Iength ) current = 0;
+               if(current < 0 ) current = playList.Iength -1;
+               var item = playList[current];
+               if(item){
+                   play(item);
+               }
+           } 
+           start()
+           
+           function updateTime(){
+               player.value = player.cureentTime / player.duration;
+               //获取进度条的值 ；current:音频/视频的当前播放时间
+               //duration :音频/视频的总时间
+               
+               
+           }
+           
+           //音频添加 时间更新的 时间 （事件， 执行函数）
+           player.addEventListener("timeupdate", UpdateTime);
+                      
+           
+           
+        </script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> 名片 </title>
+       <style>
+        body{
+            background-color: #333;
+            -moz-user-select:none;      
+        }
+        article{
+            width:500px;
+            height:300px;
+            background-color:yellow;
+            margin:50px auto;
+            padding:30px;
+            position:relative;
+            box-sizing:border-box; 
+            transform:rotate(15deg);  
+            
+              
+            
+        }
+        .logo{
+            width:160px;
+            /*margin-top:20px;
+            margin-left:5px;*/
+            /*position:absolute;*/
+            
+            
+        }
+        .pic{
+            width:150px;
+            height:250px;
+            bottom:-20px;;
+            right:0px;
+            position:absolute;
+            
+        }
+        small{
+            display:block;
+            font-size:14px;
+            font-weight:normal;
+            
+        }
+        h1{
+            font-size:32px;
+        }
+        address{
+            font-style:normal;
+            margin-bottom:-20px;
+        
+        }
+        address p{
+            margin:5px 0;
+            
+            
+                
+            }
+        .dizhi:before{
+            content:"地址: ";
+        }
+        .tel:before{
+            content:"手机: ";
+        }
+        .qq:before{
+            content:"qq: ";
+        }
+        .email:before{
+            content:"邮箱: ";
+        }
+        .qq{
+            margin:20px;
+        }
+        aside{
+            width:500px;
+            height:300px;
+            background-color:yellow;
+            /*margin :0 auto;*/
+            margin:0 auto;
+            box-sizing:border-box;
+            
+            
+            
+            
+        }
+        .photo{
+            width:100px;
+            height:100px;
+            border:solid 8px #fff;
+            border-radius:50%;
+            background-image:url(photo.jpg);
+            background-size:300px 300px;
+            background-position:60% 30%;
+            float:left;
+            margin-top:50px;
+            
+           
+        }
+        aside p{
+            width:300px;
+            float:right;
+            margin-top:60px;
+            text-indent:28px;
+        }
+        
+        
+        
+        
+        </style>
+       
+        </head>
+        <body>
+            <article>
+            <img class="logo" src="logo.png"></img>
+            <img class="pic" src="pic.png"></img>
+            
+            
+             
+            <h1>常伟 <small>HTML讲师</small></h1>
+            <address>
+            <p class="dizhi"> 郑州市经开区幼儿园</p>
+            <span class="tel">   182111 </span>
+             <span class="qq">213464847</span> 
+            <p class="email">2382599414qq.com </p>  
+             </address>
+     
+                </article>
+                <aside>
+                <div class="photo"></div>
+                
+                  <p>学好一门技术就去使用它，在使用的过程中体会到乐趣，才是学习最佳状态。</p>  
+                    </aside>
+                    
+            </body>
+    </html> 

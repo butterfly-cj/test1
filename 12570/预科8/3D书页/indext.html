@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--声明文档类型-->
+<html>
+    
+    
+    
+<!--页面根元素-->    
+    <head>
+           <!--页面头部,引用css样式文件，js文件等-->
+        <meta charset="utf-8"/>
+            <!--声明文档编码,防止乱码-->
+        <title>3D书页</title>
+            <!--页面题目-->
+            
+         <style>
+           body{
+               background-color:#000;
+               /*背景颜色*/ 
+               color:#fff;
+               -moz-user-select:none;
+               
+           } 
+           main{
+               width:300px;
+               height:400px;
+               border:solid 1px #fff;
+               margin:250px auto;  /*居中*/ 
+               position:relative;
+               /*相对定位*/
+               perspective:900px;
+               /*perspective:设置3D元素与视图之间的距离
+               */
+               perspective-origin:30% 80%;
+               /*设置元素视图的基点位置 （x轴 y轴）
+               需要与perspective共同使用
+               perspective-origin:默认值50% 50% */
+           }
+           section{
+               width:100%; 
+               height:100%; 
+               /*border:solid 1px cyan;*/
+               position:absolute;
+               overflow:hidden;
+               transform-origin:0 0;
+               /*transform-origin:改变元素的旋转基点位置(xyz)
+               与transform共同使用*/
+           }
+           /*:nth-child(1) 伪类选择器，选择的是；属于父级元素的第n个子元素
+           使用前提：该元素的同级元素为同一个标签*/
+           section:nth-child(1){
+               background-color:brown;
+               transform:rotateY(-1deg);
+               /*transform:元素向2D3D元素转换，rotateY(0)沿Y轴旋转角度*/
+               transition:transform 2s;
+           }
+           section:nth-child(2){
+               background-color:red; 
+               transform:rotateY(-40deg);
+               transition:transform 2s;
+           } 
+           section:nth-child(3){
+               background-color:blue;
+               transform:rotateY(-50deg);
+               transition:transform 2s; 
+           }
+            section:nth-child(4){
+               background-color:green;
+               transform:rotateY(-60deg);
+                 transition:transform 2s;
+            }
+            section:nth-child(5){
+              background-color:purple;
+              opacity:0.8;/*透明度*/
+               transform:rotateY(-100deg);
+               transition:transform 2s;
+               /*过渡效果*/  
+            }
+            
+            section:nth-child(1) span{
+              position:absolute;
+              bottom:20px;
+              right:20px;
+              /*定位：绝对定位*/ 
+              
+              }
+              section:nth-child(1):active{
+                transform:rotateY(-120deg);
+             }
+             
+             
+             
+              
+             section:nth-child(2) span{
+              position:absolute;
+              bottom:20px;
+              right:20px;
+               
+             }
+             section:nth-child(2):active{
+                transform:rotateY(-120deg);
+             }
+             
+             
+             
+             
+             section:nth-child(3) span{
+              position:absolute;
+              bottom:20px;
+              right:20px;
+              
+              }
+             section:nth-child(3):active{
+                transform:rotateY(-120deg);
+             }
+             
+             
+             
+            
+            h2{
+                font-weight:normal;/*字体样式*/
+                text-align:center;/*文本居中*/
+                margin-top:30px;
+            }
+            p{
+                margin-left:20px;
+                margin-right:20px;
+                font-size:14px;
+                text-indent:28px;/*首行缩进*/
+            }
+            section:nth-child(4) span{
+                position:absolute;
+                right:20px;
+                bottom:20px;
+                
+            }
+            section:nth-child(4):active{
+                transform:rotateY(-120deg);
+            }
+            
+            
+            
+            
+            h1{
+                font-weight:normal;
+                font-size:30px;
+                text-align:center;
+                margin-top:60px;
+                
+            }
+           /*选择器{属性：属性值；}*/
+           /*在html中，所有元素统称为标签，在css中所有的标签统称为选择器*/
+            
+            section:nth-child(5) span{
+                position:absolute;
+                bottom:60px;
+                right:120px;
+                
+            }
+            section:nth-child(5):active{
+                transform:rotateY(-120deg);
+                /*页码最多旋转到120度/
+            }
+            
+            
+            
+         </style>  
+           
+           
+           
+        
+        </head>
+        
+        
+        
+        
+        <body>
+           <!--页面的主题内容--> 
+           <main>
+               <!--重要内容-->
+               <section><span>3</span></section>
+               <section><span>2</span></section>
+               <section><span>1</span></section>
+               <section>
+                   <h2>引言</h2>
+                   <!--标题标签-->
+                    <p>矩阵在图形变换中有广泛应用，也是图形变换的数学基础。、
+                   缩放、旋转、倾斜变换只需要使用2*2矩阵，
+                   如果把平移内容也加入进来，将得到2*3矩阵，
+                   如果进一步扩充，可以使用一个3*3的矩阵表示所有的基本2D变换。
+                    </p> 
+                     <p> 多个矩阵变换相乘将得到组合变换的效果。
+                   3D变换也可以很方便地使用4*4的矩阵表示。
+                   在图形变换过程中，普通的几何图形只需要考虑顶点即可。
+                   旋转变换时需要使用三角函数。
+                   为了在平面显示器中看到3D效果，还需要使用透视理论。
+                    </p>
+                    <!--<p>段落标签-->
+                                      <span>智游H5教研组 编著</span>  
+                                      
+                   
+                   </section>
+                   <section>
+                       
+                       
+                       <h1>css图形变换入门</h1>
+                       <!--<h1>标题标签-->
+                                  <span>智游教育</span>
+                       <!--p,<h1>,<h2>标签具有默认字体大小、字体样式等--> 
+                   </section>
+               </main>
+           
+           
+           
+              
+            </body>
+    </html>
+    

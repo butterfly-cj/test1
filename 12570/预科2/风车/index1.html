@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8" />
+    <title> 风车 </title>
+    <style>
+        main{ background-image:url(caodi.png); width:1000px; height:500px; border:solid 2px #333; margin:0 auto;
+        background-size:contain; }
+        div{animation-name:animated;
+        animation-duration:2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear；
+        }
+        div:nth-child(1){width:350px; height:300px; background-image:url(fengche.png); background-size:contain;
+        background-repeat:no-repeat; position:absolute; top:80px; left:125px; /*animation-name:animated;
+        animatiom-duratiom:2s; animation-interation-count:infinite; animation-timing-function:linear; */
+        }
+        /* :nth-child(n) 选择第n个元素，
+        
+        */
+        
+        div:nth-child(2){width:200px; height:150px; background-image:url(fengche.png); background-size:contain;
+        background-repeat:no-repeat; position:absolute; top:260px; left:430px; }
+        
+        div:nth-child(3){width:300px; height:300px; background-image:url(fengche.png); background-size:contain;
+        background-repeat:no-repeat; position:absolute; top:170px; right:160px; }
+        
+        @keyframes animated{
+            from{
+                transform:rotate(360deg);
+            }
+            to{
+                transfrom:rotate(0);
+            }    
+        }
+    </style>  
+</head>
+<body>
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>        
+</body>            
+</html>
+
+   

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- 声明文档类型,告诉浏览器,该文档是html文档 -->
+<html> 
+    <!-- 文档的根元素 -->
+    <head>
+        <!-- 网页的头部,描述网页的信息,包括标题,关键词等,
+        引用Js文件/css文件-->
+        <meta charset="utf-8">
+        <!-- 声明网页编码,防止乱码 -->
+        <title> 音乐播放器  </title>
+        <!--  网页的标题 -->
+        
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <!-- link引用外部的css文件,href:文件路径 -->
+        <!-- <style> </style> css内联引用,描写网页样式 -->
+        <style> 
+            body{
+                background-color:#333;
+                color:rgb(174,164,154);
+                text-align:center;
+                /* 字体颜色 */
+            }
+            main{
+                width:300px; 
+                /* 宽度 */
+                height:300px;
+                /* 高度 */
+                background-image:url(wf.png);
+                /* 插入背景图片 */
+                background-size:300px;
+                /* 背景图片大小 */
+                margin:100px auto;
+                border-radius:8px;
+                /* 边框圆角 */
+                box-shadow:0 2px 5px #000;
+                /* 边框阴影 */
+                animation-name:slideBg;
+                /* 动画名称: */
+                animation-duration:0.5s;
+                   /* 动画时间:完成一次动画所需的时间,默认值为0; */
+                background-repeat:no-repeat;
+                /* 取消背景图片重复 */
+                /* 背景图片自带:图片不断重复,自身图片尺寸 */
+            }
+            
+            @keyframes slideBg{
+                from{
+                    background-position:300px 0;
+                }
+                to{
+                    background-position:0 0;
+                }
+            }
+            
+            header{
+                width:100%;
+                height:96px;
+                overflow:hidden;
+                background-color:rgba(22,22,22,0.9);
+                /* 背景色:色值 透明度 */
+                border-top-left-radius:8px;
+                /* 左上角圆角 */
+                border-top-right-radius:8px;
+                /* 右上角圆角 */
+            }
+            /* h1,h2自带的样式:外边距,字体大小,字体粗细等 */
+            h1{
+                font-size:30px;
+                /* 字体大小 -- 字号 */
+                font-weight:normal;
+                /* 字体粗细 */
+                margin:0;
+                /* 外边距 */
+               padding-top:20px;
+               /* 内边距 */
+            }
+            h2{
+                font-size:14px;
+                font-weight:normal;
+                margin:0;
+            }
+            progress{
+                width:100%;
+                height:4px;
+                display:block;
+                /* 块级元素 */
+                border:none;
+                background-color:#000;
+                
+            }
+            /* 进度条进度的颜色 */
+            ::-moz-progress-bar{
+                background:rgb(200,87,88);
+            }
+            footer{
+                width:100%;
+                height:200px;
+                background-color:rgba(106,35,42,0.9);
+                  /* 背景颜色 0.9:透明度*/
+                border-bottom-left-radius:8px;
+                /* 边框左下角圆角 */
+                border-bottom-right-radius:8px;
+                /* 边框右下角圆角 */
+                overflow:hidden;
+            }
+            time{
+                font-size:35px;
+                margin:25px auto;
+                /* 内边距 */
+                display:block;
+            }
+            /* class类名,css中前面加 .  */
+            .fa-backward,.fa-forward{
+                font-size:30px;
+                position:relative;
+                /* 相对定位 */
+                bottom:7px;
+               
+            }
+            .fa-pause,.fa-play{
+                font-size:50px;
+                margin:0 20px;
+                /* 水平方向的外边距 */
+            }
+            /*.fa{
+                font-size:30px;
+            }*/
+            aside{
+                margin-top:25px;
+            }
+            aside progress{
+                width:100px;
+                height:2px;
+                display:inline-block;
+                /* 行内块级元素 */
+                position:relative;
+                bottom:7px;
+            }
+            /* :hover , 伪类选择器,鼠标放在元素上的显示效果 */
+            .fa:hover{
+                color:#fff;
+                cursor:default;
+                /* 改变鼠标形状 */
+                text-shadow:0 3px 10px #fff;
+                /* 文本阴影 x y  模糊度 颜色 */
+            }
+        </style>
+    </head>
+    <!-- body:网页可见的主体内容 -->
+    <body>
+        <!-- 插入音频标签audio, src:文件路径 , autoplay:音频准备就绪后直接播放 -->
+        <!--<audio src="传奇.mp3"  ></audio>-->
+        <audio src=""></audio>
+         <main>
+             <!-- 主体的重要内容 -->
+             <header>
+                  <!-- 主体内容的头部 -->
+                  <h1> 默 </h1>
+                  <h2> 那英 </h2>
+             </header>
+             <progress value="0.5">
+                 <!-- 进度条 -->
+             </progress>
+             <footer>
+                 <time> 1:11 </time>
+                 <section>
+                     <span class="fa fa-backward"> </span>
+                     <!-- 上一曲按钮 -->
+                     <span class="fa fa-pause"></span>
+                     <!-- 暂停/播放 -->
+                     <span class="fa fa-forward"></span>
+                 </section>
+                 
+                 <aside>
+                    <span class="fa fa-volume-down"></span>
+                    <progress value="0.5">
+                             <!-- 进度条 -->
+                    </progress>
+                    <span class="fa fa-volume-up"></span>
+                 </aside>
+             </footer>
+         </main>
+    </body>
+    <script>
+        // script 写入Js文件
+        
+        //音乐播放
+        var player = document.getElementsByTagName("audio")[0];
+        // 创建player变量,获取第一个audio标签
+        
+        var playList = [ {name:"传奇", singer:"王菲", src:"传奇.mp3", pic:"wf.png"},
+                         {name:"知道不知道", singer:"刘若英", src:"知道不知道.mp3", pic:"lry.jpg"}];
+        // 获取歌曲列表的具体相关信息  
+        
+        
+        function play(nums){
+            player.src = nums.src; // 获取当前歌曲的音频路径
+               
+            
+            player.play();  //播放当前歌曲
+        }
+       // 播放当前歌曲所需信息 
+        
+       var current = 0; // 创建变量
+       
+       function start(){  // 创建start()函数
+           if( current >= playList.length ) current = 0;
+           if( current < 0 ) current = playList.length - 1;
+           var item = playList[current];
+           if(item){
+               play(item);
+           }
+           
+       } 
+       
+       start(); // 执行函数
+    </script>
+</html>

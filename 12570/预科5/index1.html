@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>天气</title>
+    <style>
+        body{/*文本主题*/
+            margin:0px auto;/*边缘距离*/
+            text-align:center;/*文本居中对齐*/
+            background-image:-moz-linear-gradient(top, #0D68BC,#72ADE0);/*背景图片*/
+            /*-moz-linear-gradient(top, #0D68BC,#72ADE0)颜色由上往下渐变*/
+            color:#fff;
+            text-shadow:5px 0 10px #000;/*字体加阴影不至于透明*/
+        }
+        .icons{/*图符*/
+            background-image:url(days/xue.png);
+            width:150px;/*图符宽度*/
+            height:150px;/*图符高度/
+            background-repeat:no-repeat;/*背景重复方式，背景图像不重复*/
+            background-position:center center;/*背景图片定位*/
+            margin:20px auto;/*图符边缘距离*/
+            background-size:contain;/*背景尺寸大小，这里指图像适应边框加元素*/  
+        }
+        .icon{/*.代名词*/
+            background-image:url(days/qing.png);/*url访问网址、途径*/
+            width:100px;
+            height:100px;
+            background-repeat:no-repeat;
+            background-position:certen certen;
+            margin:20px auto;
+            background-size:contain;    
+        }
+        header{/*独立标签*/
+            font-size:30px;
+            margin:20px auto;
+            display:block;/*行元素转化为块级元素，行元素只能在一行内显示，块级元素可以换行显示，并且块级元素可以调高度宽度
+            display:none表示该部分隐藏*/
+            overflow:hidden;/*溢出隐藏*/ 
+        }
+        mian{
+            display:block;
+            overflow:hidden;
+        }
+        .tempers{
+            font-size:30px;
+            font-family:Arial;
+        }
+        main .weather{
+            font-size:18px;
+            line-height:180%;
+        }
+        .wind{
+            font-size:13px;
+            line-height:150%;
+        }
+        .current{
+            font-size:13px;
+            line-height:150%;
+        }
+        section{
+            /*border:solid 1px #333;*/
+            width:600px;
+            float:left;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            郑州市
+            </header>
+            <main>
+               <div class="icons"> </div>
+               <div class="tempers">-13~5<sup>℃</sup> </div>
+               <div class="weather">小雪</div>
+               <div class="wind">微风</div>
+               <div class="current">实时温度：13℃，空气指数135，轻度污染 </div> 
+               </main>
+               <footer><!--定义section和document的页脚-->
+                   <section><!--定义文章中的节-->
+                       <div>周二</div><!--<div></div>定义文章中的分区和节，块级元素，意味着内容自动的开始一个新行-->
+                       <div class="icon"> </div><!--class可表示div属性，可以表示某一类元素，id只能表示某一个元素-->
+                       <div>-13~5<sup>℃</sup> </div>
+                       <!--<sup></sup>元素的上标-->
+                       <div>晴</div>
+                       <div>微风</div>
+                       </section>
+                   </footer>
+                   <footer>
+                       <section>
+                           <div>周三</div>
+                           <div class="icon"></div>
+                           <div>-13~5<sup>℃</sup></div>
+                           <div>晴</div>
+                           <div>微风</div>
+                           </section>
+                       </footer>
+                       <footer>
+                           <section>
+                               <div>周四</div>
+                               <div class="icon"></div>
+                               <div>-13~5<sup>℃</sup></div>
+                               <div>晴</div>
+                               <div>微风</div>
+                               </section>
+                           </footer>
+    </body>
+    </html>

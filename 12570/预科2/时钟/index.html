@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title> 时钟 </title>
+    <style>
+        main{ width:500px; height:500px; border:solid 3px #000; margin:50px auto; border-radius:50%;
+        background-color:#eee;}
+        section{ width:400px; height:200px; border:solid 1px #000; margin:150px auto; background-color:#fff;}
+        header{ text-align:right; margin-right:10px; color:#000; font-size:24px;}
+        div{ font-size:80px; text-align:center; margin-top:20px; }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <header id="date">
+                2015年12月3日  星期天
+            </header>
+            <div id="time"> 
+                
+                22:39:30
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    function showTime(){
+       var now = new Date();  /* 创建变量now，获取新的date对象  */  
+       
+    //    document.getElementById("date").innerHTML = now;  获取当前日期
+    // 包括年月日，时分秒等
+    
+       var year = now.getFullYear();
+       var month = now.getMonth() + 1 ;
+       var date = now.getDate();
+       
+       //获取星期n
+       var day = now.getDay(); // 获取七个数字：0123456
+       
+       switch(day){
+           case 0:
+           day = "星期天";
+           break;
+           
+           case 1:
+           day = "星期一";
+           break;
+           
+           case 2:
+           day = "星期二";
+           break;
+           
+           case 3:
+           day = "星期三";
+           break;
+           
+           case 4:
+           day = "星期四";
+           break;
+           
+           case 5:
+           day = "星期五";
+           break;
+           
+           case 6:
+           day = "星期六";
+           break; 
+           
+           
+       }
+       
+
+       document.getElementById("date").innerHTML = year +
+        "年" + month + "月" + date + "日" + "  " + day;
+        
+        
+        //获取时、分、秒
+        
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        
+        if(seconds < 10) seconds = "0" + seconds;
+        if(minutes < 10) minutes = "0" + minutes;
+        if(hours <10) hours = "0" + hours;
+        
+        document.getElementById("time").innerHTML = hours + ":"
+        + minutes + ":" + seconds;
+       
+    }
+    
+    showTime();
+    
+    setInterval(showTime, 1000); 
+    //间隔1000ms后循环的执行showTime函数
+</script>
+
+</html>

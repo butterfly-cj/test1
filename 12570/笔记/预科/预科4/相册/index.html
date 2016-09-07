@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title> 我的相册  </title>
+    <script src="js/jquery.js"></script>
+    <script src="libs/fancybox/jquery.fancybox.js"></script>
+    <script src="libs/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+    <script src="libs/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="libs/fancybox/helpers/jquery.fancybox-buttons.css" />
+    <link rel="stylesheet" href="libs/fancybox/helpers/jquery.fancybox-thumbs.css" />
+    
+    
+    <!-- 引用Js脚本: <script></script> 
+         引用css文件：<link rel="stylesheet" href="" />
+         -->
+    
+    <style>
+        body{
+            background-color:#333; /* 背景颜色 */
+        }
+        #xc div{
+            width:100px; /* 宽度 */
+            height:100px;  /*高度 */
+            border:solid 5px #fff; /*边框 */
+            border-bottom:solid 18px #fff;/* 下边框 */
+            transition:transform 0.5s linear;  /*时间*/
+            
+        }
+        #xc div:hover{
+            transform:rotate(0) scale(1.5,1.5) !important;
+             /* !important 属性的优先级别 */
+             z-index:100;
+        }
+        
+        #xc div a{
+            width:100px;
+            height:100px;
+            display:block;
+            text-indent: -200px; /* 首行缩进 */
+            overflow:hidden;  /*溢出内容隐藏 */
+        }
+        /* div:块级元素
+           a: 行内元素   */
+        
+    </style>
+</head>
+
+<body>
+    <main id="xc">
+        <div style="background-image:url(images/thumbs/0.jpg);"> 
+            <a href="images/0.jpg" rel="group"> 在大海冲浪  </a>  </div>
+        <div style="background-image:url(images/thumbs/1.jpg);"> 
+            <a href="images/1.jpg" rel="group"> 图片1  </a> </div>
+        <div style="background-image:url(images/thumbs/2.jpg);">
+            <a href="images/2.jpg" rel="group"> 图片2  </a>  </div>
+        <div style="background-image:url(images/thumbs/3.jpg);">
+            <a href="images/3.jpg" rel="group"> 图片3  </a>  </div>
+        <div style="background-image:url(images/thumbs/4.jpg);">
+            <a href="images/4.jpg" rel="group"> 图片4  </a>  </div>
+        <div style="background-image:url(images/thumbs/5.jpg);">
+            <a href="images/5.jpg" rel="group"> 图片5  </a> </div>
+        <div style="background-image:url(images/thumbs/6.jpg);">
+            <a href="images/6.jpg" rel="group"> 图片6  </a>  </div>
+        <div style="background-image:url(images/thumbs/7.jpg);">
+            <a href="images/7.jpg" rel="group"> 图片7  </a>  </div>
+    </main>
+</body>
+
+<!--<script>
+    function arrange(){  //创建函数
+        var h = document.documentElement.clientHeight;
+        var w = document.documentElement.clientWidth;
+        var f = document.getElementsByTagName("div")[0];
+                //获取第几个标签元素
+        var left = w * Math.random();
+        var top = h * Math.random();
+        
+        f.style.position = "absolute";
+        f.style.left = left + "px";
+        f.style.top = top + "px"; 
+        
+    }
+    
+    arrange(); // 执行函数
+    
+</script>-->
+
+<script>
+    function arrange(){   //创建函数
+        var h = $(window).height(); // 获取窗口高度
+        var w = $(window).width();  //获取窗口宽度
+        var centerX = w / 2;
+        var centerY = h / 2;
+        
+        $("#xc div").each(function(){
+            var left = centerX * Math.random() + centerX/2;
+            var top = centerY * Math.random() + centerY/2;
+            var rotate = Math.random() * 80 - 40; //旋转角度
+            
+            
+            // css：层叠样式表:cascading style sheets
+            $(this).css({
+                "position": "absolute",
+                "left": left,
+                "top": top, 
+                "transform":"rotate(" + rotate + "deg)",
+                //transform:rotate(30deg)
+            });
+        });
+        
+    }
+    
+    arrange(); //执行函数
+    $(window).resize(arrange);
+    
+    $(function(){
+        $("#xc div a").fancybox({
+            openEffect: "elastic",  //弹性弹出
+            closeEffect: "elastic", //弹性关闭
+            closeBtn: false, // 关闭按钮
+            autoPlay: true,  // 自动播放
+            
+            helpers: {
+                buttons: { }, // 按钮
+                thumbs: { alwaysCenter: true }, // 缩略图居中
+                title: { type: "inside" }, // 图片名称
+            }, 
+            beforeLoad: function(){
+                this.title = $(this.element).text();
+            }  // 显示图片标题
+            
+        });
+    });
+    
+</script>
+
+
+</html>
+
+<!--
+    拆分步骤：1.创建空函数；执行函数；
+    2.在函数中创建变量，获取窗口高度、宽度，
+    3.伪每个div元素，创建定位值，并赋予定位属性、left、top、-->

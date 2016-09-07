@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--文档声明: 声明文档是html-->
+<html>
+    <!--文档根元素-->
+    <head>
+        <!--文档头部: 引用外部文件（css样式、）（js文件）、编码声明、标题等-->
+        <meta charset="utf-8"/>
+        <!--声明文档编码，以防文字乱码-->
+        <title>打地鼠</title>
+        <!--文档标题-->
+        <script src="jquery.js"></script>
+        <!--script:导入外部js文件 src:文件途径-->
+        <style>
+            /*style:标签的样式内容：字体大小、背景颜色等*/
+            
+            body{
+            /*body:主题内容*/    
+                background-image:url(image/bg.jpg);
+                /*背景图片， url（文件路径）*/
+                margin:0;
+                /*body具有默认的8px的外边框*/
+                -moz-user-select:none;
+                /*用户无法选中该页面的文字*/
+            }   
+                div,span{
+                    font-size:36px;
+                    /*字体大小*/
+                    background-color:rgba(22,22,22,0.6);
+                    /*背景颜色    rgba(22,22,22,0.6):透明背景色  0.6：透明度
+                    图片颜色描述：1.#000;   #fff
+                    2.red; yellow;
+                    3.rgb(x,y,z) 0< x,y,z>100
+                    4.rbga(22,22,22,0.6)透明背景色  0.6：透明度
+                    opacity:0.6;
+                    /*width:150px;*/
+                    
+                    color:#fff;
+                    
+                    padding-left:20px;
+                    padding-right:30px;/*padding :内边距*/
+                    
+                    margin-top:150px;
+                    /*margin:外边距*/
+                    display:inline-block;
+                    /*转换成行内块元素*/
+                    line-height:200%;
+                    /*设置行高:百分比/数值*/
+                    border-top-right-radius:8px;
+                    border-bottom-right-radius:8px;
+          
+      }
+      
+           table{
+               width:600px;
+               height:600px;
+               margin:0 auto;
+           }
+           
+           
+           td{
+               /*border:solid 1px #000;*/
+               background-image:url(image/hole.png);
+               /*背景图片： url(路径：文件夹/文件名称)*/
+               background-repeat:no-repeat;
+               background-size:120px 50px;/*背景图片大小： 宽度 高度*/
+               background-position:center bottom;/*背景位置： 居中 垂直*/
+               height:150px;
+               text-align:center;
+               /*水平居中*/
+               vertical-align:bottom;
+               /*垂直对齐方式：下对齐*/
+               
+           } 
+           img{
+               width:80px;
+               height:0px;
+               position:relative;
+               bottom:8px;
+               
+           }
+           
+           
+           .mouseUp{
+               animation-name:up;/*动画名称*/
+               animation-duration:0.3s;/*动画持续时间：一次完整动作持续时间*/
+               animation-fill-mode:both;
+               /*动画的效果在开始和结束时持续执行*/
+           
+           }
+           .mouseDown{
+               animation-name:down;/*动画名称*/
+               animation-duration:0.1s;/*动画持续时间：一次完整动作持续时间*/
+               animation-fill-mode:both;
+           }
+           /*动画从0开始，到100结束*/
+           @keyframes up{
+               0%{
+            height:0;
+               }
+               100%{
+                   height:80px;
+               } 
+             
+           }
+         
+          @keyframes down{
+              0%{
+                   height:80px;
+                  
+              }
+              100%{
+                  height:0;
+                  
+              }
+              
+          }
+           
+            </style>
+            
+        </head>
+        
+        <body>
+            <audio src="audio/music.mp3" autoplay loop></audio>
+            <!--<div> 得分:15000 </div>快捷元素-->
+            <audio id="demo" src=""></audio>
+            <span id="score"> 得分:15000 </span><!--<span>行内元素-->
+                <!--table: 表格-->
+                <table>
+                    <tr>          <!--<tr>：行   table row-->
+                        <td><img src="image/mouse.png"></td> <!--td：单元格-->
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        </tr>
+                        <tr>          
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        </tr>
+                        <tr>          
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        </tr>
+                        <tr>          
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        <td><img src="image/mouse.png"></td> 
+                        </tr>
+                    </table>
+            
+            </body>
+            <script>
+                //出现一个地鼠：
+                var mouses =$("img"); //创建变量。 并赋值获取标签
+                
+                function show(){//创建函数：function functionName
+                    var i =Math.floor(Math.random() * 16);
+                    //Math.random(): 取0.00~1.0之间的随机数
+                    //Math.floor():向下取整数。 比如取0.1. Math.floor(0.1)=0
+                    
+                    var mouse = mouses.get(i);
+                    //获取第i个地鼠
+                    $(mouse).addClass("mouseUp").removeClass("mouseDown");
+                    //给选定的第i个地鼠，增加class类名； 同时移除一个class类名
+                    
+                    function hide(){
+                        $(mouse).addClass("mouseDown").removeClass("mouseUp");
+                    }
+                    //隐藏出现的第i个地鼠
+                    
+                    setTimeout(hide, 3500);
+                    //setTimeout(functionName, time):暂停time 毫秒后；
+                    //执行functionName函数；
+                    
+                    
+                }
+                // show();//执行函数
+                
+                
+                //出现多个地鼠
+                function plays(){
+                    for(var a=0; a<6; a++){
+                        new show();
+                    }
+                }
+                setInterval(plays, 2000);
+                //setInterval(functionName, time):
+                //暂停time(数值)毫秒后，循环执行functionName函数
+                
+                var scores=0;//创建得分变量
+                
+                $("img").click(function(){
+                    scores += 10;//scores=scores+10;
+                    $("#score").text("得分:"+ scores);
+                    
+                    
+                    
+                    $(this).addClass("mouseDown").removeClass("mouseUp");
+                    
+                    
+                    
+                 $("#demo").attr("src", "audio/dazhong.wav").get(0).play();
+                 //打中的地鼠添加打中的音频
+                 //attr() 属性插入   
+                })
+                //jquery写法： $().click(function(){  内容}）；
+                    
+                
+                </script>
+    </html>

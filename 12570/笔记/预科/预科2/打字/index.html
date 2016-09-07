@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title> 打字练习 </title>
+    <style>
+        main{ width:500px; height:500px; border:solid 3px #000; margin:50px auto; border-radius:50%; }
+        div{ font-size:350px; text-align:center; line-height:500px; }
+        footer{ text-align:center;}
+        .error{
+            color:red;
+        }
+         
+        .shake{ animation-name:shake; /* 动画名称 */
+            animation-duration:2s; /* 动画持续时间*/
+        }
+        
+        @keyframes shake{
+            from,to{
+                transform:translate(0,0);
+                /* 转换2D */
+            }
+            10%,30%,50%,70%,90%{
+                transform:translate(-10px,0);
+            }
+            20%,40%,60%,80%,100%{
+                transform:translate(10px,0);
+            }
+        }
+        
+        .zoomIn{ animation-name:zoomIn; animation-duration:2s;}
+        
+        @keyframes zoomIn{
+            0%{ 
+                transform:scale(0); opacity:0;
+            }
+             
+            50%{ 
+                opacity:1;
+            }
+        }
+        
+        
+    </style>
+</head>
+
+<body onkeyup="key(event);">
+    <main>
+        <div id="char"> A </div>
+    </main>
+    
+    <footer id="result">
+        正确10个，错误5个，正确率：88%；
+    </footer>
+</body>
+
+<script>
+    
+    var chars;   // 全局变量
+    var okCount = 0;
+    var errorCount = 0;
+    
+    function showChar(){
+        var code = Math.floor(Math.random() * 25);
+        //获取26个整数字，由1开始：1，2，3，4...26
+        
+        
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(code);
+        
+        document.getElementById("char").innerHTML = chars;
+        
+    }
+    
+    showChar();
+    
+    function showResult(){
+        if(okCount > 0){
+            var i;
+            if(errorCount > 0){
+                i = okCount / (okCount + errorCount) * 100;
+            }
+            document.getElementById("result").innerHTML = 
+            "正确" + okCount + "个，错误" + errorCount + "个，正确率" +
+            i.toFixed(2) + "%"; 
+        }
+    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    
+    function key(event){
+        var key = event.key.toUpperCase(); //创建键盘变量，变为大写字母
+        var charBox = document.getElementById("char");   
+        //创建新变量，选中ID元素
+        
+        function clearAnimate(){
+            charBox.className = "animated";
+        }
+        
+        
+        if(key == chars){
+            okCount = okCount + 1;
+            charBox.className = "animated zoomIn";   
+            //给ID添加类名class = "animated zoomIn"
+            showChar();
+            
+            setTimeout(clearAnimate,500); 
+            
+        } else {
+            errorCount = errorCount + 1;
+            charBox.className = "animated shake error";
+            
+            setTimeout(clearAnimate,500);
+            //暂停500ms后，执行clearAnimate;
+            
+        }
+        showResult(); 
+        
+    }
+    
+    
+</script>
+
+</html>
+

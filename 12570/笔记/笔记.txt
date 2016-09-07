@@ -1,0 +1,1 @@
+1,html5formobile.com   2.写错声明图片无高度。 3.复制粘贴、旋转transform 4.header是定义页眉的标签 5.mian是框架代码，指框架某个模块用main页代替。6.w3shool在线教程  7.footer   8.符号用中文写出来也不会被读取 8.html菜鸟教程

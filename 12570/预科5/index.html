@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8"/>
+    <title>天气</title>
+    <style>
+        html{
+             height:100%;
+        }
+        body{
+            margin:0px auto;
+            text-align:center;
+            background-image:-moz-linear-gradient(top, #0D68BC,#72ADE0); 
+            color:#fff;
+            text-shadow:3px 0 10px#000;
+            height:100%;
+            overflow:hidden; 
+            
+        }
+        .icons{
+            background-image:url(days/xue.png);
+            width:150px;
+            height:150px;
+            background-repeat:no-repeat;
+            background-position:center center;
+            margin:20px auto;
+            background-size:contain;
+        }
+        .icon{
+            background-image:url(days/qing.png);
+            width:100px;
+            height:100px;
+            background-repeat:no-repeat;
+            background-position:center center;
+            margin:30px auto;
+            background-size:contain;
+            opacity:0.6;/*透明度*/
+        }
+        header{
+            font-size:30px;
+            margin:20px auto;
+            display:block;
+            overflow:hidden;
+            
+            
+        }
+        main{
+            display:block;/*块级元素*/
+            overflow:hidden;
+        }
+        .tempers{
+            font-size:30px;
+            font-family:Arial;
+        }
+        main .weather{
+            font-size:18px;
+            line-height:180%;
+        }
+        .wind{
+            font-size: 13px;
+            line-height: 150%;
+        }
+        .current{
+            font-size:13px;
+            line-height:150%;
+        }
+        section{
+            /*border: solid 1px #333;*/
+            width:33.33%;
+            float:left;
+            border-right:solid 1px #aaa;
+            box-sizing:border-box;/*分号用中文写也不能读取*/
+            
+        }
+        section:last-child{
+            border-right:none;
+            
+        }
+      /*:last-child--所选的元素父元素的子元素都是同一个标签*/
+      /*:section:nth-child{
+          border-right:none;
+      }*/
+        footer{
+            margin-top:150px;
+        }
+        
+        
+     </style>   
+    
+</head>
+
+<body>
+    <!--<img src="flake.png"/>-->
+    <header>
+       郑州市 
+     </header>
+     <main>
+         <div class="icons"> </div>
+         <div class="tempers">-13~5<sup>℃</sup> </div>
+         <div class="weather">小雪 </div>
+         <div class="wind"> 微风</div>
+         <div class="current">实时温度：13℃，空气指数135，轻度污染 </div>
+     </main>
+     <footer>
+         <section>
+             <div> 周二</div>
+             <div class="icon"> </div>
+             <div> -13~5<sup>℃</sup></div>
+             <div class="wind"> 晴</div>
+             <div class="wind"> 微风</div>
+             </section>
+         <section>
+             <div>周三 </div>
+             <div class="icon"> </div>
+             <div> -13~5<sup>℃</sup></div>
+             <div class="wind"> 晴</div>
+             <div class="wind"> 微风</div>   
+             </section>
+         <section>
+             <div>周四 </div>
+             <div class="icon"> </div>
+             <div> -13~5<sup>℃</sup></div>
+             <div class="wind"> 晴</div>
+             <div class="wind"> 微风</div>   
+             </section>
+         </footer> 
+         
+         
+</body>
+<script>
+    function flake(){//创建函数//
+   
+      
+    
+    var f=document.createElement("img");//创建新标签img//
+    var w=document.documentElement.clientWidth;
+    var h=document.documentElement.clientHeight;
+    var left= w * Math.random();
+    var top= h * Math.random();
+    //Math.random():获取0~1之间的随机值//
+    f.src ="flake.png";
+    f.style.position="absolute";//绝对定位//
+    f.style.left = left +"px";
+    f.style.top =top +"px";
+    f.style.transform="scale("+Math.random()/ 2+")";
+    document.body.appendChild(f);//向body添加子元素img//
+    
+    function down(){
+        top+=Math.random()*10;
+        left+=Math.random()*5;
+        if(top>h)top=-100;
+        if(left>w)left=-100;
+        f.style.top=top+"px";
+        f.style.left=left+"px";
+       
+    }
+    setInterval(down,50);//暂停50s后循环的执行down函数//
+    }
+    for (var i=0; i<50; i++){//50是指雪花的个数//
+        new flake();
+    }
+    flake();//执行函数//
+    </script>
+</html>

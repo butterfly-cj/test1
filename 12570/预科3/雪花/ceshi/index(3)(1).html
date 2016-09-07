@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>雪花飘落</title>
+        <meta charset="utf-8"/>
+        <style>
+            body{background-color:purple;} /*背景颜色*/
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <!--<img src="flake.png" />-->
+          
+            
+        
+        
+    </body>
+    
+    
+    <script>
+        function flake (){      //创建函数 
+           var f = document.createElement("img"); //创建img元素 
+           var w = document.documentElement.clientWidth;  //获取浏览器可见的宽度
+           var h = document.documentElement.clientHeight; //获取浏览器可见的高度
+           var top = h * Math.random();
+           var left = w * Math.random();
+              
+           f.src = "flake.png";
+           f.style.position = "absolute"; //绝对定位
+           f.style.top = top + "px"; //定位的top值
+           f.style.left = left + "px"; //定位的left值
+           f.style.transform = "scale(" + Math.random() + ")"; //改变元素比例大小
+           
+           document.body.appendChild(f); //增加子元素
+           
+           function down(){
+              top += Math.random() * 10;
+              left += Math.random() * 5;
+              
+              if(top> h) top = -100;
+              if(left > w) left = -100;
+              
+              f.style.left = left + "px";
+              f.style.top = top +"px"; 
+           }
+           
+           setInterval(down,50); //暂停50s后循环的执行down函数
+        }
+        
+        for(var i=0; i<90; i++){
+            new flake();
+        }
+        
+        // flake()  //执行函数
+        
+     </script>
+    
+    
+    
+    
+</html>

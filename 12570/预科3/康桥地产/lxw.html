@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <meta charset="utf-8" />
+        <title> 康桥林溪湾 </title>
+        <script src="jquery.js"></script>
+        <!-- <link rel="stylesheet" href="" /> 
+            link 引用外部css文件 -->
+        <style>
+            body{ 
+                margin:0; /* 外边距 */
+            }
+            ul,li{ margin:0;
+             list-style-type:none; /* 列表样式类型 */
+             padding:0;/* 内边距 */
+             }
+             
+            ul{
+                position:absolute; /* 绝对定位 */
+                bottom:50px;
+            }
+            
+            a{ text-decoration:none; /* 文本装饰 -- 下划线 */
+              color:red;
+              font-size:24px; /* 字体大小*/
+              background-color:rgba(22,22,22,0.5);
+              padding-left:30px;
+              padding-top:15px;
+              padding-bottom:8px;
+              line-height:250%;
+              background-image:url(images/right-arrow.png); /* 背景图片*/
+              background-repeat:no-repeat; /* 背景图片重复 */
+              padding-right:60px;
+              background-position:90%; /* 背景图片位置 */
+              background-size:15px 20px; /* 背景图片大小 */
+            }
+            
+            li:nth-child(2) a{ 
+                padding-right:90px;
+                animation-delay:0.5s; 
+            }
+            li:nth-child(3) a{
+                padding-right:150px;
+                animation-delay:1s;
+            }
+            li:nth-child(4) a{
+                padding-right:40px;
+                animation-delay:1.5s;
+            }
+            li:nth-child(5) a{
+                padding-right:90px;
+                animation-delay:2s;
+            }
+            
+            li:nth-child(2){
+                animation-delay:0.5s;
+            }
+            li:nth-child(3){
+                animation-delay:1s;
+            }
+            li:nth-child(4){
+                animation-delay:1.5s;
+            }
+            li:nth-child(5){
+                animation-delay:2s;
+            }
+            
+            .fadeIn{ animation-name:fadeIn; /* 动画名 */
+                   animation-fill-mode:both;  /* 动画动作在开始和结束继续执行  */
+                   animation-duration:2s; /* 动画持续事件 */
+                }
+            
+            @keyframes fadeIn{
+                from{ opacity:0; } /* opacity:透明度 */
+                to{ opacity:1;}
+            }
+            
+            .slideLeft{
+                animation-name:slideLeft;
+                animation-duration:2s;
+            }
+            
+            @keyframes slideLeft{
+                from{ transform:translate(-100px,0);}
+                to{ transform:translate(0,0);}
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div> <img src="images/yd.jpg"> </div>
+        <!--<ol></ol>-->
+        <ul>
+            <li class="slideLeft">
+                 <a href="" class="fadeIn"> 楼盘详情  </a> </li>
+            <li class="slideLeft"> <a href="" class="fadeIn"> 全景户型 </a> </li>
+            <li class="slideLeft"> <a href="" class="fadeIn"> 项目图册 </a> </li>
+            <li class="slideLeft"> <a href="" class="fadeIn"> 预约看房 </a> </li>
+            <li class="slideLeft"> <a href="" class="fadeIn"> 房贷计算器 </a> </li>
+        </ul>
+        
+        <!-- ul,li,无序列表 unorderd list -->
+    </body>
+    
+    <script>
+        $("img").width($(window).width());
+        $("img").height($(window).height());
+        
+    </script>
+</html>
